@@ -25,11 +25,13 @@ const config = {
  
   prod: {
     port: PROD_PORT,
+    mongo_url: MONGO_URL,
     jwtAccessSecretKey: JWT_ACCESS_SECRET_KEY,
     jwtRefreshSecretKey: JWT_REFRESH_SECRET_KEY,
   },
   dev: {
     port: DEV_PORT,
+    mongo_url: MONGO_URL,
     jwtAccessSecretKey: JWT_ACCESS_SECRET_KEY,
     jwtRefreshSecretKey: JWT_REFRESH_SECRET_KEY,
   },

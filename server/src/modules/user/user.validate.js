@@ -9,7 +9,7 @@ const userSchema = Joi.object({
     'any.required': 'Fullname is required.',
   }),
   username: Joi.string().min(3).max(30).required(),
-
+ 
   balance: Joi.number().optional(),
   password: Joi.string().min(6).max(30).required().messages({
     'string.base': 'Password must be a string.',

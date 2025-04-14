@@ -15,7 +15,7 @@ class TransactionRepository extends BaseRepository {
     return await category.save();
   };
   getAllTransactionByAdmin = async () => {
-    const data = await this.#model.find().populate('user','fullname balance');
+    const data = await this.#model.find().sort({createdAt: -1}).populate('user','fullname balance');
     return data;
   };
   getTransactionByUserId = async (userId) => {
@@ -31,6 +31,7 @@ class TransactionRepository extends BaseRepository {
     
     if (!transaction) throw new NotFoundError('Transaction not found');
     const { user, amount } = transaction;
+    
 
     await this.#model.findByIdAndUpdate(
       transactionId,
@@ -40,7 +41,7 @@ class TransactionRepository extends BaseRepository {
       }
     );
 
-    if (status === 'completed') {
+    if (status === 'approved') {
       await this.#userModel.updateOne(
         { _id: user },
         {
@@ -53,6 +54,8 @@ class TransactionRepository extends BaseRepository {
 
     return;
   };
+
+
 }
 
 export default new TransactionRepository(TransactionModel,UserModel);

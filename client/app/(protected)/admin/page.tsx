@@ -7,7 +7,6 @@ import { useAuth } from "@/context/authContext";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
